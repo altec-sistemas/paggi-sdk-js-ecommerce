@@ -1,5 +1,6 @@
 const chai = require("chai");
-const TokenValidator = require("../SDK/tokenValidation");
+const TokenValidate = require("../SDK/tokenValidation");
+const TokenValidator = new TokenValidate();
 
 const token = process.env.TOKEN;
 const invalidToken = process.env.INVALIDTOKEN;
