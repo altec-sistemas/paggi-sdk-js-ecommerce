@@ -1,9 +1,11 @@
 {
-    "extends": ["eslint:recommended", "google", "prettier"],
+    "extends": ["airbnb-base", "prettier"],
     "rules": {
         "prettier/prettier": "error",
         "no-undef": "off",
-        "no-unsafe-finally": "off"
+        "no-unsafe-finally": "off",
+        "class-methods-use-this": "off",
+        "no-var": "off"
     },
     "plugins": ["prettier"],
     "parser": "babel-eslint"
