@@ -1,31 +1,33 @@
 const jwtDecode = require("jwt-decode");
 
-const TokenValidation = {}; // C Object simplifies exporting the module
-
-TokenValidation.isValid = token => {
-  let isPartnerSet;
-  try {
-    const decodedToken = jwtDecode(token);
-    isPartnerSet =
+class TokenValidation {
+  isValid(token){
+    let isPartnerSet;
+    try {
+      const decodedToken = jwtDecode(token);
+      isPartnerSet =
       typeof decodedToken.permissions[0].partner_id !== "undefined";
-  } catch (err) {
-    isPartnerSet = false;
-  } finally {
-    return isPartnerSet;
+    } catch (err) {
+      isPartnerSet = false;
+    } finally {
+      return isPartnerSet;
+    }
   }
-};
 
-TokenValidation.isExpired = token => {
-  const decodedToken = jwtDecode(token);
-  const date = new Date(decodedToken.exp);
-  todayDate = new Date().valueOf() / 1000;
-  return +date < +todayDate;
-};
+  isExpired(token){
+    return this.helper(token, 0);
+  }
 
-TokenValidation.isExpiring = token => {
-  const decodedToken = jwtDecode(token);
-  const date = new Date(decodedToken.exp * 1000);
-  todayDate = new Date().valueOf();
-  return +todayDate > +date - 2592000;
-};
+  isExpiring(token){
+    return this.helper(token, 2592000)
+  }
+
+  helper(token, subtract){
+    const decodedToken = jwtDecode(token);
+    const date = new Date(decodedToken.exp);
+    const todayDate = new Date().valueOf() / 1000;
+    return +todayDate > +date - subtract;
+  }
+}
+
 module.exports = TokenValidation;
