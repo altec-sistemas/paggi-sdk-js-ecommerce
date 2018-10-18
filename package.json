@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/paggi-com/sdk-js-ecommerce#readme",
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "chai": "^4.2.0",
     "eslint": "^5.7.0",
     "eslint-config-airbnb-base": "^13.1.0",
