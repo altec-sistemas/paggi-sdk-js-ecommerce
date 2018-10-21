@@ -1,21 +1,21 @@
-const chai = require("chai");
-const TokenValidate = require("../SDK/tokenValidation");
+var chai = require("chai");
+var TokenValidate = require("../SDK/tokenValidation");
 
-const TokenValidator = new TokenValidate();
+var TokenValidator = new TokenValidate();
 
-const token = process.env.TOKEN;
-const invalidToken = process.env.INVALIDTOKEN;
-const expiredToken = process.env.EXPIREDTOKEN;
-const expiringToken = process.env.EXPIRINGTOKEN;
+var token = process.env.TOKEN;
+var invalidToken = process.env.INVALIDTOKEN;
+var expiredToken = process.env.EXPIREDTOKEN;
+var expiringToken = process.env.EXPIRINGTOKEN;
 
 describe("Token Validation", () => {
   describe("#isValid()", () => {
     it("Should return true if token is valid", () => {
-      const valid = TokenValidator.isValid(token);
+      var valid = TokenValidator.isValid(token);
       chai.assert.isTrue(valid);
     });
     it("Should return false if token is invalid", () => {
-      const valid = TokenValidator.isValid(invalidToken);
+      var valid = TokenValidator.isValid(invalidToken);
       chai.assert.isFalse(valid);
     });
   });
