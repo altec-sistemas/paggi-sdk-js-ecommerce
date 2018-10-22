@@ -5,7 +5,8 @@
         "no-undef": "off",
         "no-unsafe-finally": "off",
         "class-methods-use-this": "off",
-        "no-var": "off"
+        "no-var": "off",
+        "guard-for-in": "off"
     },
     "plugins": ["prettier"],
     "parser": "babel-eslint"
