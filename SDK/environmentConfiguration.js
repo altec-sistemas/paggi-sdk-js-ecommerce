@@ -4,16 +4,10 @@ var TokenValidation = require("./tokenValidation");
 var validator = new TokenValidation();
 
 function EnvironmentConfiguration() {
-  // var token = "";
-  // var partnerId = "";
-  // var environment = "";
+  var token = "";
+  var partnerId = "";
+  var environment = "";
 }
-
-EnvironmentConfiguration.token = "";
-
-EnvironmentConfiguration.partnerId = "";
-
-EnvironmentConfiguration.environment = "";
 
 EnvironmentConfiguration.prototype.setToken = token => {
   if (validator.isValid(token) && !validator.isExpired(token)) {
@@ -43,23 +37,30 @@ EnvironmentConfiguration.prototype.setPartnerIdByToken = token => {
 };
 
 EnvironmentConfiguration.prototype.getToken = () => {
-  if (typeof this.token !== "undefined") {
+  if (typeof this.token !== "undefined" && this.token !== "") {
     return this.token;
   }
   return "Erro, Token não configurado";
 };
 
 EnvironmentConfiguration.prototype.getEnvironment = () => {
-  if (typeof this.environment !== "undefined") {
+  if (typeof this.environment !== "undefined" && this.token !== "") {
     return this.environment;
   }
   return "Erro, ambiente não configurado";
 };
 
 EnvironmentConfiguration.prototype.getPartnerId = () => {
-  if (typeof this.partnerId !== "undefined") {
+  if (typeof this.partnerId !== "undefined" && this.token !== "") {
     return this.partnerId;
   }
   return "Erro, partnerID não configurado";
 };
+
+EnvironmentConfiguration.prototype.reset = () => {
+  this.token = "";
+  this.environment = "";
+  this.partnerId = "";
+};
+
 module.exports = EnvironmentConfiguration;
