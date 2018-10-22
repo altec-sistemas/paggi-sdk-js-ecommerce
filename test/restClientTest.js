@@ -33,12 +33,13 @@ describe("Rest Client", () => {
 
   describe("#mountUrl", () => {
     it("Should return the URL for the request.", () => {
+      var url;
       var client = new RestClient();
       var env = new EnvConfiguration();
       env.setEnvironment("Staging");
       env.setPartnerIdByToken(token);
       env.setToken(token);
-      var url = `https://api.paggi.com/v1/partners/${env.getPartnerId()}/cards`;
+      url = `https://api.paggi.com/v1/partners/${env.getPartnerId()}/cards`;
       chai.assert.equal(
         client.mountUrl("cards", "Staging", env.getPartnerId(), "", [], ""),
         url

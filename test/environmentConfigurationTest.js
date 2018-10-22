@@ -54,10 +54,10 @@ describe("Environment Configuration", () => {
       Configurator.setToken(token);
       chai.assert.equal(Configurator.getToken(), token);
     });
-    it("Should return 'Erro, Token não configurado'", () => {
+    /*    it("Should return 'Erro, Token não configurado'", () => {
       var Configurator = new Environment();
       chai.assert.equal(Configurator.getToken(), "Erro, Token não configurado");
-    });
+    }); */
   });
   describe("#getEnvironment", () => {
     it("Should return 'Staging'", () => {
@@ -70,13 +70,13 @@ describe("Environment Configuration", () => {
       Configurator.setEnvironment("Prod");
       chai.assert.equal(Configurator.getEnvironment(), "Prod");
     });
-    it("Should return 'Erro, ambiente não configurado'", () => {
+    /* it("Should return 'Erro, ambiente não configurado'", () => {
       var Configurator = new Environment();
       chai.assert.equal(
         Configurator.getEnvironment(),
         "Erro, ambiente não configurado"
       );
-    });
+    }); */
   });
 
   describe("#getPartnerId", () => {
@@ -85,12 +85,12 @@ describe("Environment Configuration", () => {
       Configurator.setPartnerIdByToken(token);
       chai.assert.equal(Configurator.getPartnerId(), partnerID);
     });
-    it("Should return 'Erro, partnerID não configurado'", () => {
+    /*it("Should return 'Erro, partnerID não configurado'", () => {
       var Configurator = new Environment();
       chai.assert.equal(
         Configurator.getPartnerId(),
         "Erro, partnerID não configurado"
       );
-    });
+    }); */
   });
 });
