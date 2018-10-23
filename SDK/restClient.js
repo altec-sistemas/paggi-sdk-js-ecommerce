@@ -46,7 +46,7 @@ RestClient.prototype.mountUrl = (
   return url;
 };
 
-RestClient.prototype.createRequest = (method, url, headers = [], body = []) => {
+RestClient.prototype.createRequest = (method, url, headers = {}, body = []) => {
   var xhttp = new XMLHttpRequest();
   xhttp.open(method, url, false);
   Object.keys(headers).forEach(key => {
@@ -54,6 +54,7 @@ RestClient.prototype.createRequest = (method, url, headers = [], body = []) => {
   });
   JSON.stringify(body);
   xhttp.send(null);
+  console.log(xhttp);
   return xhttp;
 };
 

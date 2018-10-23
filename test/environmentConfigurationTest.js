@@ -85,7 +85,7 @@ describe("Environment Configuration", () => {
       Configurator.setPartnerIdByToken(token);
       chai.assert.equal(Configurator.getPartnerId(), partnerID);
     });
-    /*it("Should return 'Erro, partnerID não configurado'", () => {
+    /* it("Should return 'Erro, partnerID não configurado'", () => {
       var Configurator = new Environment();
       chai.assert.equal(
         Configurator.getPartnerId(),
