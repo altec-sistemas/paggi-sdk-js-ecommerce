@@ -1,6 +1,7 @@
 {
     "extends": ["airbnb-base", "prettier"],
     "rules": {
+        "prefer-destructuring": "off",
         "prettier/prettier": "error",
         "no-undef": "off",
         "no-unsafe-finally": "off",
