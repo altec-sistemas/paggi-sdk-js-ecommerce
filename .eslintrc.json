@@ -7,7 +7,8 @@
         "no-unsafe-finally": "off",
         "class-methods-use-this": "off",
         "no-var": "off",
-        "guard-for-in": "off"
+        "guard-for-in": "off",
+        "global-require": "off"
     },
     "plugins": ["prettier"],
     "parser": "babel-eslint"
