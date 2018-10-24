@@ -1,7 +1,15 @@
 {
     "extends": ["airbnb-base", "prettier"],
     "rules": {
-        "prettier/prettier": "error"
+        "prefer-destructuring": "off",
+        "prettier/prettier": "error",
+        "no-undef": "off",
+        "no-unsafe-finally": "off",
+        "class-methods-use-this": "off",
+        "no-var": "off",
+        "guard-for-in": "off",
+        "global-require": "off"
     },
-    "plugins": ["prettier"]
+    "plugins": ["prettier"],
+    "parser": "babel-eslint"
 }

@@ -1,37 +1,44 @@
-const chai = require("chai");
-const TokenValidation = require("../SDK/tokenValidation");
+var chai = require("chai");
+var TokenValidate = require("../SDK/tokenValidation");
 
-const token = process.env.TOKEN;
-const invalidToken = process.env.INVALIDTOKEN;
-const expiredToken = process.env.EXPIREDTOKEN;
-const expiringToken = process.env.EXPIRINGTOKEN;
+var token = process.env.TOKEN;
+var invalidToken = process.env.INVALIDTOKEN;
+var expiredToken = process.env.EXPIREDTOKEN;
+var expiringToken = process.env.EXPIRINGTOKEN;
 
-/* global describe it */
 describe("Token Validation", () => {
   describe("#isValid()", () => {
     it("Should return true if token is valid", () => {
-      chai.assert.isTrue(TokenValidation.isValid(token));
+      var TokenValidator = new TokenValidate();
+      var valid = TokenValidator.isValid(token);
+      chai.assert.isTrue(valid);
     });
     it("Should return false if token is invalid", () => {
-      chai.assert.isTrue(TokenValidation.isValid(invalidToken));
+      var TokenValidator = new TokenValidate();
+      var valid = TokenValidator.isValid(invalidToken);
+      chai.assert.isFalse(valid);
     });
   });
 
   describe("#isExpired()", () => {
     it("Should return true if token is expired", () => {
-      chai.assert.isTrue(TokenValidation.isExpired(expiredToken));
+      var TokenValidator = new TokenValidate();
+      chai.assert.isTrue(TokenValidator.isExpired(expiredToken));
     });
     it("Should return false if token is not expired", () => {
-      chai.assert.isTrue(TokenValidation.isExpired(token));
+      var TokenValidator = new TokenValidate();
+      chai.assert.isFalse(TokenValidator.isExpired(token));
     });
   });
 
   describe("#isExpiring()", () => {
     it("Should return true if token has less than one month to expire.", () => {
-      chai.assert.isTrue(TokenValidation.isExpiring(expiringToken));
+      var TokenValidator = new TokenValidate();
+      chai.assert.isTrue(TokenValidator.isExpiring(expiringToken));
     });
     it("Should return false if token has more than one month to expire", () => {
-      chai.assert.isTrue(TokenValidation.isExpiring(token));
+      var TokenValidator = new TokenValidate();
+      chai.assert.isFalse(TokenValidator.isExpiring(token));
     });
   });
 });
