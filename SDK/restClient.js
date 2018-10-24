@@ -25,14 +25,14 @@ RestClient.prototype.mountUrl = (
   var parameters = "";
   var urlPreffix = "https://api.";
   var urlSuffix = "paggi.com/v1";
-  var url = urlPreffix + (environment.localeCompare("Staging") ? "stg." : "");
+  var url = urlPreffix + (environment === "Staging" ? "stg." : "");
   url += urlSuffix;
   if (!endpoint.localeCompare("/banks")) {
     return `${url}/banks`;
   }
   url += "/partners/";
   url += partnerId;
-  url += `/${endpoint}`;
+  url += `${endpoint}`;
   url += objectId === "" ? "" : `/${objectId}`;
   url += options;
   if (options !== "") {
@@ -52,9 +52,7 @@ RestClient.prototype.createRequest = (method, url, headers = {}, body = []) => {
   Object.keys(headers).forEach(key => {
     xhttp.setRequestHeader(key, headers[key]);
   });
-  JSON.stringify(body);
-  xhttp.send(null);
-  console.log(xhttp);
+  xhttp.send(JSON.stringify(body));
   return xhttp;
 };
 
