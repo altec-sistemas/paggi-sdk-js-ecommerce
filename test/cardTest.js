@@ -20,7 +20,7 @@ describe("Card", () => {
         document: "16123541090"
       });
       chai.assert.exists(cartao.id);
-    });
+    }).timeout(3000);
     it("Should return errors", () => {
       var cartao = Paggi.Card.create({
         cvv: "123",
@@ -31,7 +31,7 @@ describe("Card", () => {
         document: ""
       });
       chai.assert.exists(cartao.errors);
-    });
+    }).timeout(3000);
   });
   describe("#delete()", () => {
     it("Should return status 204", () => {
@@ -45,7 +45,7 @@ describe("Card", () => {
       });
       cartao = Paggi.Card.del(cartao.id);
       chai.assert.equal(cartao.code, 204);
-    });
+    }).timeout(3000);
     it("Should return errors", () => {
       var cartao = Paggi.Card.del("111111");
       chai.assert.exists(cartao.errors);
