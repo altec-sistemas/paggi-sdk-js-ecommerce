@@ -14,6 +14,6 @@ describe("Bank", () => {
       configurator.setPartnerIdByToken(token);
       bancos = Paggi.Bank.find();
       chai.assert.exists(bancos);
-    }).timeout(3000);
+    }).timeout(5000);
   });
 });

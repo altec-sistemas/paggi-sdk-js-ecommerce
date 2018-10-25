@@ -59,6 +59,6 @@ describe("Rest Client", () => {
         }
       );
       chai.assert.equal(response.status, 200);
-    });
+    }).timeout(5000);
   });
 });
