@@ -39,7 +39,7 @@ describe("Rest Client", () => {
       env.setEnvironment("Staging");
       env.setPartnerIdByToken(token);
       env.setToken(token);
-      url = `https://api-ecommerce.stg.paggi.com/v1/partners/${env.getPartnerId()}/cards`;
+      url = `https://api.stg.paggi.com/v1/partners/${env.getPartnerId()}/cards`;
       chai.assert.equal(
         client.mountUrl("/cards", "Staging", env.getPartnerId(), "", [], ""),
         url
