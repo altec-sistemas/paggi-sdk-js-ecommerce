@@ -32,7 +32,13 @@ var makeRequest = (
     "Content-Type": "application/json"
   };
   var response = client.createRequest(useMethod, url, headers, body);
-  return response;
+  try {
+    if (navigator.userAgent)
+      return { errors: { Messsagem: "Esse SDK não é utilizado em front-end" } };
+    return response;
+  } catch (err) {
+    return response;
+  }
 };
 
 module.exports = makeRequest;

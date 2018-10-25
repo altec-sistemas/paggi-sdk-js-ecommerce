@@ -23,7 +23,7 @@ RestClient.prototype.mountUrl = (
   options = ""
 ) => {
   var parameters = "";
-  var urlPreffix = "https://api.";
+  var urlPreffix = "https://api-ecommerce.";
   var urlSuffix = "paggi.com/v1";
   var url = urlPreffix + (environment === "Staging" ? "stg." : "");
   url += urlSuffix;
