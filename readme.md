@@ -21,12 +21,12 @@ configurator.setEnvironment("Staging");
 configurator.setToken(token);
 configurator.setPartnerIdByToken(token);
 var cartao = Paggi.Card.create({
-cvv: "123",
-year: "2022",
-number: "4123200700046446",
-month: "09",
-holder: "BRUCE WAYNER",
-document: "16123541090"
+  cvv: "123",
+  year: "2022",
+  number: "4123200700046446",
+  month: "09",
+  holder: "BRUCE WAYNER",
+  document: "16123541090"
 });
 ```
 
@@ -77,7 +77,6 @@ configurator.setEnvironment("Staging");
 configurator.setToken(token);
 configurator.setPartnerIdByToken(token);
 var bancos = Paggi.Bank.find();
-chai.assert.exists(bancos);
 ```
 
 ### Mais informações

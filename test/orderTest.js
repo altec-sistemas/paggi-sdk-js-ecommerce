@@ -1,11 +1,10 @@
 var chai = require("chai");
-var EnvConfiguration = require("../SDK/environmentConfiguration");
 var Paggi = require("../SDK/paggi");
 
 var token = process.env.TOKEN;
 
 describe("Order", () => {
-  var configurator = new EnvConfiguration();
+  var configurator = new Paggi.Environment();
   configurator.setEnvironment("Staging");
   configurator.setToken(token);
   configurator.setPartnerIdByToken(token);
