@@ -1,8 +1,8 @@
 {
-  "name": "sdk-javascript-ecommerce",
+  "name": "paggi-js",
   "version": "1.0.0",
   "description": "SDK para integração com sistema da Paggi",
-  "main": "index.js",
+  "main": "SDK/paggi.js",
   "scripts": {
     "test": "node ./node_modules/mocha/bin/mocha"
   },
