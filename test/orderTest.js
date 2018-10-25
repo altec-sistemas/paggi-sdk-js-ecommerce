@@ -190,15 +190,15 @@ describe("Order", () => {
         chai.assert.equal(obj.status, "canceled");
       });
     });
-  });
-  it("Should return errors when try to delete", () => {
-    var promise = new Promise(resolve => {
-      setTimeout(() => {
-        resolve(Paggi.Order.cancel("111111"));
-      }, 5000);
-    });
-    promise.then(obj => {
-      chai.assert.exists(obj.errors);
+    it("Should return errors when try to delete", () => {
+      var promise = new Promise(resolve => {
+        setTimeout(() => {
+          resolve(Paggi.Order.cancel("111111"));
+        }, 5000);
+      });
+      promise.then(obj => {
+        chai.assert.exists(obj.errors);
+      });
     });
   });
 });
