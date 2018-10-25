@@ -52,6 +52,7 @@ RestClient.prototype.createRequest = (method, url, headers = {}, body = []) => {
   Object.keys(headers).forEach(key => {
     xhttp.setRequestHeader(key, headers[key]);
   });
+  xhttp.setRequestHeader("User-Agent", `${process.version}, SDK v1.0.0`);
   xhttp.send(JSON.stringify(body));
   return xhttp;
 };
