@@ -3,11 +3,7 @@ var TokenValidation = require("./tokenValidation");
 
 var validator = new TokenValidation();
 
-function EnvironmentConfiguration() {
-  var token = "";
-  var partnerId = "";
-  var environment = "";
-}
+function EnvironmentConfiguration() {}
 
 EnvironmentConfiguration.prototype.setToken = token => {
   if (validator.isValid(token) && !validator.isExpired(token)) {
