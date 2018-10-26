@@ -26,7 +26,7 @@ declare namespace Paggi {
   interface Orders {
     create(params: object): object;
     capture(id: string, params?: object): object;
-    canccel;
+    cancel(id: string): object;
   }
 }
 export = Paggi;
