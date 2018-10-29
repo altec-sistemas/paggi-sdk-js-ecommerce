@@ -3,7 +3,7 @@ declare function createRequest(
   url: string,
   headers?: object,
   body?: object
-): Paggi.Response;
+): object;
 declare namespace Paggi {
   interface Environment {
     setToken(token: string): boolean;
