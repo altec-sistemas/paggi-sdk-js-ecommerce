@@ -5,7 +5,7 @@ Utilize este SDK para realizar a integração com nossa API de ecommerce.
 ## Instalação
 
 ```sh
-npm install paggi/sdk-ecommerce
+npm install paggi-js
 ```
 
 ## Utilização
