@@ -21,7 +21,7 @@ configurator.setEnvironment("Staging");
 configurator.setToken(token);
 configurator.setPartnerIdByToken(token);
 var cartao = Paggi.Card.create({
-  cvv: "123",
+  cvc: "123",
   year: "2022",
   number: "4123200700046446",
   month: "09",
