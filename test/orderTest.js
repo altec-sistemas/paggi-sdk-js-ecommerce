@@ -11,8 +11,8 @@ describe("Order", () => {
   configurator.setPartnerIdByToken(token);
   describe("#create()", () => {
 
-    it("Should return the order with 'captured' in status", () => {
-      return Promise.resolve(Paggi.Order.create({
+    it("Should return the order with 'captured' in status", async () => {
+      const order = await Paggi.Order.create({
         capture: true,
         ip: "66.249.64.60",
         external_identifier: "ABC123",
@@ -35,11 +35,12 @@ describe("Order", () => {
           document: "86219425006",
           email: "bruce@waynecorp.com"
         }
-      })).then((order) => expect(order.status).to.be.equal("captured"))
+      });
+      return expect(order.status).to.be.equal("captured");
     });
 
-    it("Should return the order with 'authorized' in status", () => {
-      return Promise.resolve(Paggi.Order.create({
+    it("Should return the order with 'authorized' in status", async () => {
+      const order = await Paggi.Order.create({
         capture: false,
         ip: "66.249.64.60",
         external_identifier: "ABC123",
@@ -62,11 +63,12 @@ describe("Order", () => {
           document: "86219425006",
           email: "bruce@waynecorp.com"
         }
-      })).then((order) => expect(order.status).to.be.equal("authorized"));
+      });
+      return expect(order.status).to.be.equal("authorized");
     });
 
-    it("Expect to return 'captured' in a order previous authorized", () => {
-      return Promise.resolve(Paggi.Order.create({
+    it("Expect to return 'captured' in a order previous authorized", async () => {
+      const order = await Paggi.Order.create({
         capture: false,
         ip: "66.249.64.60",
         external_identifier: "ABC123",
@@ -89,16 +91,13 @@ describe("Order", () => {
           document: "86219425006",
           email: "bruce@waynecorp.com"
         }
-      }))
-        .then((order) => Promise.resolve(Paggi.Order.capture(order.id))
-          .then((response) => {
-            console.log(response)
-            return expect(response.status).to.be.equal("captured")
-          }))
+      });
+      const response = await Paggi.Order.capture(order.id);
+      return expect(response.status).to.be.equal("captured");
     });
 
-    it("Should return errors in creation", () => {
-      return Promise.resolve(Paggi.Order.create({
+    it("Should return errors in creation", async () => {
+      const order = await Paggi.Order.create({
         capture: false,
         ip: "66.249.64.60",
         external_identifier: "ABC123",
@@ -119,13 +118,14 @@ describe("Order", () => {
           document: "86219425006",
           email: "bruce@waynecorp.com"
         }
-      })).then((order) => { expect(order.code).to.be.equal(422) })
+      });
+      return expect(order.code).to.be.equal(422);
     });
   });
 
   describe("#cancel()", () => {
-    it("Should return 204", () => {
-      return Promise.resolve(Paggi.Order.create({
+    it("Should return 204", async () => {
+      const order = await Paggi.Order.create({
         capture: false,
         ip: "66.249.64.60",
         external_identifier: "ABC123",
@@ -148,13 +148,13 @@ describe("Order", () => {
           document: "86219425006",
           email: "bruce@waynecorp.com"
         }
-      }))
-        .then((order) => Promise.resolve(Paggi.Order.cancel(order.id))
-          .then((response) => expect(response.status == "cancelled").to.be.true))
+      });
+      const response = await Paggi.Order.cancel(order.id);
+      return expect(response.status == "cancelled").to.be.true;
     });
-    it("Should return errors when try to delete", () => {
-      return Promise.resolve(Paggi.Order.cancel("111111"))
-        .then((order) => expect(order.code).to.be.equal(400))
+    it("Should return errors when try to delete", async () => {
+      const order = await Paggi.Order.cancel("111111");
+      return expect(order.code).to.be.equal(400);
     });
   });
 });
