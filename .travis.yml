@@ -15,7 +15,7 @@ before_script:
 
 # Commands you want to run that will verify your build.
 script:
-  - mocha
+  - mocha --timeout 10000
   - ./node_modules/.bin/eslint **/*.js
 
 # allow_failures: Allow this build to fail under the specified environments.

@@ -1,6 +1,6 @@
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
-function RestClient() {}
+function RestClient() { }
 
 RestClient.prototype.setMethod = method => {
   var methods = ["GET", "POST", "PUT", "DELETE"];
@@ -35,7 +35,7 @@ RestClient.prototype.mountUrl = (
   url += `${endpoint}`;
   url += objectId === "" ? "" : `/${objectId}`;
   url += options;
-  if (options !== "") {
+  if (params.length != 0) {
     url += "?";
     Object.keys(params).forEach(key => {
       parameters += `${key}=${params[key]}`;

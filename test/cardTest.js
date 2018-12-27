@@ -1,4 +1,5 @@
-var chai = require("chai");
+var chai = require('chai');
+var expect = chai.expect;
 var Paggi = require("../SDK/paggi");
 
 var token = process.env.TOKEN;
@@ -9,8 +10,8 @@ describe("Card", () => {
   configurator.setToken(token);
   configurator.setPartnerIdByToken(token);
   describe("#create()", () => {
-    it("Should return the ID of the created card", () => {
-      var cartao = Paggi.Card.create({
+    it("Should return the ID of the created card", async () => {
+      const card = await Paggi.Card.create({
         cvv: "123",
         year: "2022",
         number: "4123200700046446",
@@ -18,23 +19,25 @@ describe("Card", () => {
         holder: "BRUCE WAYNER",
         document: "16123541090"
       });
-      chai.assert.exists(cartao.id);
-    }).timeout(5000);
-    it("Should return errors", () => {
-      var cartao = Paggi.Card.create({
+      return expect(card.id).to.exist;
+    })
+
+    it("Should return errors", async () => {
+      const card = await Paggi.Card.create({
         cvv: "123",
         year: "2022",
         number: "4123200700046446",
         month: "09",
-        holder: "BRUCE WAYNER",
-        document: ""
+        //holder: "BRUCE WAYNER",
+        document: "16123541090"
       });
-      chai.assert.exists(cartao.errors);
-    }).timeout(5000);
+      return expect(card.code).to.be.equals(422);
+    })
   });
+
   describe("#delete()", () => {
-    it("Should return status 204", () => {
-      var cartao = Paggi.Card.create({
+    it("Should return status 204", async () => {
+      const card = await Paggi.Card.create({
         cvv: "123",
         year: "2022",
         number: "4123200700046446",
@@ -42,12 +45,13 @@ describe("Card", () => {
         holder: "BRUCE WAYNER",
         document: "16123541090"
       });
-      cartao = Paggi.Card.del(cartao.id);
-      chai.assert.equal(cartao.code, 204);
-    }).timeout(10000);
-    it("Should return errors when deleting", () => {
-      var cartao = Paggi.Card.del("111111");
-      chai.assert.exists(cartao.errors);
-    }).timeout(5000);
+      const response = await Paggi.Card.del(card.id);
+      return expect(response.code).to.equal(204);
+    })
+
+    it("Should return errors when deleting", async () => {
+      const response = await Paggi.Card.del("111111");
+      return expect(response.code).to.be.equals(400);
+    })
   });
 });
