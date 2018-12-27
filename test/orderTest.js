@@ -36,6 +36,7 @@ describe("Order", () => {
           email: "bruce@waynecorp.com"
         }
       });
+      console.log(order);
       return expect(order.status).to.be.equal("captured");
     });
 
