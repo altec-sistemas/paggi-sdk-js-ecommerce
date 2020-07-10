@@ -157,7 +157,7 @@ A Assinatura é responsável pelo pagamento, assim como desconto e preços adici
 > Criar plano:
 
 var request = Paggi.Plan.create({
-  name: "Primeiro plano,
+  name: "Primeiro plano",
   price: 1990,
   interval: "1m",
   trial_period: "2d",
