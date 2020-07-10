@@ -54,19 +54,4 @@ describe("Card", () => {
       return expect(response.code).to.be.equals(400);
     })
   });
-
-  describe("#delete()", () => {
-    it("Should return status 200", async () => {
-      const card = await Paggi.Card.create({
-        cvv: "123",
-        year: "2022",
-        number: "4123200700046446",
-        month: "09",
-        holder: "BRUCE WAYNER",
-        document: "16123541090"
-      });
-      const response = await Paggi.Card.find(card.document);
-      return expect(response.code).to.equal(200);
-    })
-  });
 });
