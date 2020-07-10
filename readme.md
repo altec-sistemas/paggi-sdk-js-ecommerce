@@ -138,8 +138,6 @@ var request = Paggi.Recipient.create({
 
 ```
 
-
-
 ### Bancos
 
 ```js
@@ -147,39 +145,88 @@ var request = Paggi.Recipient.create({
 var bancos = Paggi.Bank.find([start: 0, count: 20]);
 ```
 
-### Planos
+### Planos / Assinaturas
+
+
+Para criar uma assinatura é necessário um plano existente.
+O Plano controla o valor, intervalo entre pagamentos, duração, período de teste da assinatura.
+A Assinatura é responsável pelo pagamento, assim como desconto e preços adicionais se necessário.
+
 ```js
 
 > Criar plano:
 
 var request = Paggi.Plan.create({
-    name: "Primeiro plano,
-    price: 1990,
-    interval: "1m",
-    trial_period: "2d",
-    external_identifier: "12345",
-    description: "Teste"
-    }
+  name: "Primeiro plano,
+  price: 1990,
+  interval: "1m",
+  trial_period: "2d",
+  external_identifier: "12345",
+  description: "Teste"
+  }
 );
+
+
+> Criar assinatura: 
+
+var request = Paggi.Subscriptions.create({
+  external_identifier:  "12345",
+  plan_id: "7f42a0a0-6ae8-4a57-a340-a8c4867771eb",
+  ip:  "8.8.8.8",
+  customer: {
+    name: "Bruce Wayne",
+    document: "16223541090",
+    email: "bruce@waynecorp.com"    
+  },
+  card: {
+    cvc: "123",
+    year: "2020",
+    month: "01",
+    number: "4485200700046446",
+    holder: "BRUCE WAYNER",
+    document: "16223541090"
+  }
+  discount: {
+    {
+      period: 2,
+      description: "Teste Desconto",
+      amount: 1000
+    }
+  },
+  additional: {
+    {
+      period: 3,
+      description: "Teste adicionais",
+      amount: 2000
+    }
+  }
+})
 
 
 > Consultar plano:
 
-var cartao = Paggi.Card.find({plan_id: "7f42a0a0-6ae8-4a57-a340-a8c4867771eb"});
+var plan = Paggi.Plan.find({plan_id: "7f42a0a0-6ae8-4a57-a340-a8c4867771eb"});
 
 
 > Atualizar plano:
 
 var plan_id =  "7f42a0a0-6ae8-4a57-a340-a8c4867771eb"
 
-var request = Paggi.Recipient.update({price: 2990, document: "78945612389"}, plan_id});
+var request = Paggi.Plan.update({price: 2990}, plan_id});
 
 
 > Cancelar plano:
 
 var plan_id =  "7f42a0a0-6ae8-4a57-a340-a8c4867771eb"
 
-var request = Paggi.Recipient.delete( plan_id});
+var request = Paggi.Plan.delete(plan_id});
+
+
+> Cancelar assinatura:
+
+var subscription_id = "cae4fd53-2169-4b5f-ac48-026fade071ae"
+
+var request = Paggi.Subscriptions.find(subscription_id);
 
 ```
 
