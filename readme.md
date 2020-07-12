@@ -15,7 +15,7 @@ npm install paggi-js
 ```js
 var EnvConfiguration = require("../SDK/environmentConfiguration");
 var Paggi = require("../SDK/paggi");
-
+var token = process.env.TOKEN;
 var configurator = new EnvConfiguration();
 configurator.setEnvironment("Staging");
 configurator.setToken(token);
